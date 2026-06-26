@@ -1,558 +1,644 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>BlackStreamCL - Foro</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ByF Distribuciones | Tu Estilo, Tu Regla</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 
-  :root{
-    --bg:#05060a;
-    --card:#0f1317;
-    --muted:#9aa3ad;
-    --accent-1:#b14cff;
-    --accent-2:#ff4fb3;
-    --glass: rgba(255,255,255,0.03);
-    --glass-2: rgba(255,255,255,0.02);
-    --radius:14px;
-    --maxWidth:1200px;
-  }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
 
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    color:#e9eef6;
-    background:var(--bg);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    overflow-x:hidden;
-  }
+body{
 
-  /* BACKGROUND LOGO (full page, blurred) */
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background-image: url('logo.png'); /* <- sube tu logo con este nombre */
-    background-repeat:no-repeat;
-    background-position: center;
-    background-size: 60vmin; /* tamaño del logo en fondo */
-    opacity:0.06;
-    filter: blur(28px) saturate(1.1);
-    transform: scale(1.05);
-    z-index:0;
-    pointer-events:none;
-  }
-  /* dark overlay sobre el fondo para mejor contraste */
-  body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    background: linear-gradient(180deg, rgba(4,6,10,0.7), rgba(6,8,12,0.85));
-    z-index:1;
-    pointer-events:none;
-  }
+background:#050505;
+color:white;
 
-  .wrap{
-    position:relative;
-    z-index:2;
-    max-width:var(--maxWidth);
-    margin:36px auto;
-    padding:36px;
-  }
+}
 
-  header{
-    text-align:center;
-    margin-bottom:28px;
-  }
-  .logo-inline{
-    width:120px;
-    height:120px;
-    display:inline-block;
-    background-image:url('logo.png');
-    background-repeat:no-repeat;
-    background-position:center;
-    background-size:contain;
-    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.6));
-    border-radius:12px;
-  }
-  h1{
-    margin:18px 0 6px;
-    font-size:44px;
-    line-height:1;
-    letter-spacing:-0.5px;
-    font-weight:800;
-    color:var(--accent-1);
-    text-shadow: 0 6px 20px rgba(177,76,255,0.06);
-  }
-  .subtitle{
-    color:var(--muted);
-    font-size:14px;
-    margin-bottom:26px;
-  }
+body::before{
 
-  /* cards grid */
-  .grid{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:20px;
-    align-items:stretch;
-  }
+content:"";
 
-  .card{
-    background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.01));
-    border-radius:var(--radius);
-    padding:22px;
-    border:1px solid rgba(255,255,255,0.03);
-    box-shadow: 0 10px 30px rgba(2,4,8,0.6);
-    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-    cursor:pointer;
-    height:100%;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-  }
+position:fixed;
 
-  .card:hover{
-    transform: translateY(-6px);
-    border-color: rgba(177,76,255,0.5);
-    box-shadow: 0 18px 40px rgba(8,10,14,0.7), 0 0 40px rgba(177,76,255,0.03);
-  }
+width:100%;
+height:100%;
 
-  .card .head{
-    display:flex;
-    gap:12px;
-    align-items:center;
-  }
+background:
 
-  .icon{
-    width:42px;height:42px;border-radius:10px;
-    background: linear-gradient(135deg, rgba(177,76,255,0.12), rgba(255,79,179,0.06));
-    display:flex;align-items:center;justify-content:center;
-    color:var(--accent-1);font-weight:700;font-size:18px;
-    border:1px solid rgba(177,76,255,0.06);
-  }
+radial-gradient(circle at top,#D4AF37 0%,transparent 40%),
 
-  .card h3{
-    margin:0;font-size:16px;letter-spacing:0.2px;font-weight:800;color:#fff;
-  }
-  .card p{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:1.5}
+radial-gradient(circle at bottom,#222 0%,transparent 45%);
 
-  .card .arrow{align-self:flex-end;color:var(--muted);font-size:18px}
+opacity:.18;
 
-  /* layout for sections */
-  .sections{
-    margin-top:34px;
-    display:grid;
-    gap:18px;
-  }
+z-index:-1;
 
-  .section{
-    background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
-    border-radius:12px;
-    padding:22px;
-    border:1px solid rgba(255,255,255,0.03);
-    display:none;
-  }
+}
 
-  .section.active{display:block; animation:fadeIn .22s ease both}
+header{
 
-  @keyframes fadeIn{
-    from{opacity:0; transform: translateY(8px)}
-    to{opacity:1; transform: translateY(0)}
-  }
+position:fixed;
 
-  .section h2{
-    margin:0 0 8px 0;font-size:20px;color:var(--accent-1)
-  }
-  .section p, .section li{
-    color:var(--muted);
-    font-size:14px;
-    line-height:1.65;
-  }
-  .section ul{padding-left:18px;margin:10px 0}
+top:0;
 
-  .close{
-    display:inline-block;margin-top:14px;padding:9px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);cursor:pointer;
-  }
+left:0;
 
-  /* catalog grid */
-  .catalogo-title{
-    margin-top:16px;margin-bottom:8px;text-align:center;font-weight:700;color:var(--accent-1);font-size:22px;
-  }
-  .catalogo-grid{
-    margin-top:12px;
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-    gap:14px;
-  }
-  .servicio{
-    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-    border:1px solid rgba(255,255,255,0.03);
-    padding:16px;border-radius:12px;text-align:center;font-weight:700;color:#ffffff;font-size:14px;
-    transition:transform .15s ease, border-color .15s ease;
-  }
-  .servicio:hover{transform:translateY(-6px);border-color: rgba(177,76,255,0.45)}
+width:100%;
 
-  footer{margin-top:32px;text-align:center;color:var(--muted);font-size:13px;padding-bottom:30px}
+display:flex;
 
-  /* responsive */
-  @media (max-width:1120px){ .grid{grid-template-columns:repeat(2,1fr)} }
-  @media (max-width:720px){
-    .grid{grid-template-columns:1fr}
-    h1{font-size:34px}
-    .logo-inline{width:96px;height:96px}
-  }
+justify-content:space-between;
+
+align-items:center;
+
+padding:20px 8%;
+
+background:rgba(0,0,0,.75);
+
+backdrop-filter:blur(12px);
+
+z-index:999;
+
+border-bottom:1px solid rgba(212,175,55,.15);
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.logo img{
+
+height:60px;
+
+}
+
+.logo h2{
+
+color:#D4AF37;
+
+font-size:28px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:white;
+
+margin-left:30px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#D4AF37;
+
+}
+
+.hero{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:30px;
+
+}
+
+.hero h1{
+
+font-size:70px;
+
+color:#D4AF37;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:22px;
+
+color:#ddd;
+
+margin-bottom:40px;
+
+}
+
+.btn{
+
+display:inline-block;
+
+padding:16px 45px;
+
+background:#D4AF37;
+
+color:#000;
+
+text-decoration:none;
+
+font-weight:bold;
+
+border-radius:40px;
+
+transition:.4s;
+
+}
+
+.btn:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 30px #D4AF37;
+
+}
+
+section{
+
+padding:120px 8%;
+
+}
+
+.titulo{
+
+font-size:45px;
+
+text-align:center;
+
+margin-bottom:60px;
+
+color:#D4AF37;
+
+}
+
+.produtos{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:30px;
+
+}
+
+.card{
+
+background:#111;
+
+border-radius:20px;
+
+overflow:hidden;
+
+transition:.4s;
+
+border:1px solid rgba(212,175,55,.2);
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 0 25px rgba(212,175,55,.4);
+
+}
+
+.card img{
+
+width:100%;
+
+height:320px;
+
+object-fit:cover;
+
+}
+
+.card h3{
+
+padding:15px;
+
+font-size:22px;
+
+}
+
+.card p{
+
+padding:0 15px;
+
+color:#aaa;
+
+}
+
+.card a{
+
+display:block;
+
+margin:20px;
+
+text-align:center;
+
+padding:12px;
+
+background:#D4AF37;
+
+color:#000;
+
+font-weight:bold;
+
+text-decoration:none;
+
+border-radius:10px;
+
+}
+
+.redes{
+
+display:flex;
+
+justify-content:center;
+
+gap:30px;
+
+flex-wrap:wrap;
+
+}
+
+.redes a{
+
+width:80px;
+
+height:80px;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:35px;
+
+color:white;
+
+text-decoration:none;
+
+background:#111;
+
+transition:.3s;
+
+border:1px solid #D4AF37;
+
+}
+
+.redes a:hover{
+
+background:#D4AF37;
+
+color:#000;
+
+transform:scale(1.1);
+
+}
+
+.whatsapp{
+
+position:fixed;
+
+right:25px;
+
+bottom:25px;
+
+width:75px;
+
+height:75px;
+
+background:#25D366;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:40px;
+
+color:white;
+
+text-decoration:none;
+
+box-shadow:0 0 20px #25D366;
+
+z-index:999;
+
+}
+
+footer{
+
+padding:40px;
+
+text-align:center;
+
+color:#999;
+
+background:#000;
+
+margin-top:80px;
+
+}
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:45px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+}
 
 </style>
+
 </head>
+
 <body>
 
-  <div class="wrap">
-    <header>
-      <div class="logo-inline" aria-hidden="true"></div>
-      <h1>BlackStreamCL</h1>
-      <div class="subtitle">Todo tu entretenimiento, en un solo lugar</div>
-    </header>
+<header>
 
-    <!-- CARDS -->
-    <div class="grid" role="list">
-      <div class="card" role="listitem" onclick="openSection('sec-catalogo')">
-        <div class="head">
-          <div class="icon">≡</div>
-          <div>
-            <h3>CATÁLOGO</h3>
-            <p>Todos los servicios de streaming disponibles.</p>
-          </div>
-        </div>
-        <div class="arrow">›</div>
-      </div>
+<div class="logo">
 
-      <div class="card" role="listitem" onclick="openSection('sec-info')">
-        <div class="head">
-          <div class="icon">i</div>
-          <div>
-            <h3>INFORMACIÓN IMPORTANTE</h3>
-            <p>Lee todo lo que necesitas saber sobre BlackStreamCL.</p>
-          </div>
-        </div>
-        <div class="arrow">›</div>
-      </div>
+<img src="img/logo.png">
 
-      <div class="card" role="listitem" onclick="openSection('sec-comprar')">
-        <div class="head">
-          <div class="icon">🛒</div>
-          <div>
-            <h3>CÓMO COMPRAR</h3>
-            <p>Proceso completo para realizar tu compra.</p>
-          </div>
-        </div>
-        <div class="arrow">›</div>
-      </div>
+<h2>ByF Distribuciones</h2>
 
-      <div class="card" role="listitem" onclick="openSection('sec-pago')">
-        <div class="head">
-          <div class="icon">💳</div>
-          <div>
-            <h3>MÉTODOS DE PAGO</h3>
-            <p>Información sobre pagos y garantías.</p>
-          </div>
-        </div>
-        <div class="arrow">›</div>
-      </div>
+</div>
 
-      <div class="card" role="listitem" onclick="openSection('sec-terminos')">
-        <div class="head">
-          <div class="icon">📄</div>
-          <div>
-            <h3>TÉRMINOS DE COMPRA</h3>
-            <p>Términos y condiciones de nuestros servicios.</p>
-          </div>
-        </div>
-        <div class="arrow">›</div>
-      </div>
+<nav>
 
-      <div class="card" role="listitem" onclick="openSection('sec-soporte')">
-        <div class="head">
-          <div class="icon">🎧</div>
-          <div>
-            <h3>SOPORTE 24/7</h3>
-            <p>Atención continua y asistencia en todo momento.</p>
-          </div>
-        </div>
-        <div class="arrow">›</div>
-      </div>
-    </div>
+<a href="#inicio">Inicio</a>
 
-    <!-- SECTIONS -->
-    <div class="sections">
+<a href="#catalogo">Catálogo</a>
 
-      <!-- CATALOGO -->
-      <section id="sec-catalogo" class="section" aria-hidden="true">
-        <h2>Catálogo de Servicios</h2>
-        <p>Estos son los servicios que ofrecemos (sin precios):</p>
-        <div class="catalogo-grid" aria-label="Catálogo">
-          <div class="servicio">Netflix</div>
-          <div class="servicio">Disney+</div>
-          <div class="servicio">Amazon Prime Video</div>
-          <div class="servicio">Spotify</div>
-          <div class="servicio">HBO Max</div>
-          <div class="servicio">YouTube Premium</div>
-          <div class="servicio">Crunchyroll</div>
-          <div class="servicio">IPTV</div>
-          <div class="servicio">TNT Sports</div>
-          <div class="servicio">DirecTV Go</div>
-          <div class="servicio">VIX</div>
-          <div class="servicio">Apple TV+</div>
-          <div class="servicio">ChatGPT Plus</div>
-          <div class="servicio">WWE</div>
-          <div class="servicio">NBA League Pass</div>
-          <div class="servicio">Canva Pro</div>
-          <div class="servicio">CapCut PRO</div>
-          <div class="servicio">Pornhub Premium</div>
-        </div>
+<a href="#redes">Redes</a>
 
-        <button class="close" onclick="closeSection('sec-catalogo')">Cerrar</button>
-      </section>
+<a href="#contacto">Contacto</a>
 
-      <!-- INFORMACION IMPORTANTE -->
-      <section id="sec-info" class="section" aria-hidden="true">
-        <h2>Información importante</h2>
+</nav>
 
-        <ol>
-          <li><strong>El punto más IMPORTANTE:</strong> es leer todo lo que escribimos; en 10 MINUTOS entenderán todo sobre NUESTRA TIENDA.</li>
-          <li><strong>Nuestras cuentas no son ORIGINALES</strong>, por eso su increíble costo.</li>
-          <li><strong>No somos una EMPRESA</strong>; somos un grupo de personas que se dedica a vender cuentas de streaming con RESPONSABILIDAD.</li>
-          <li><strong>Si quieres comprarnos, por favor PACIENCIA</strong>, tenemos muchos clientes por atender; nuestra tardanza se debe a eso. Disculpa de antemano.</li>
-          <li><strong>Si alguna cuenta presenta fallas, NO HACEMOS DEVOLUCIÓN DE DINERO</strong> porque no tenemos el tiempo para gestionarlo.</li>
-          <li><strong>Las cuentas pueden dañarse</strong>; por eso SOMOS SINCEROS, pero nuestro equipo RESPONDE POR TODAS.</li>
-          <li><strong>Tenemos TÉRMINOS DE COMPRA muy claros</strong>; deben leerlos antes de pagar.</li>
-          <li><strong>Si luego de comprar molestas y no tienes paciencia</strong>, el perjudicado serás tú, ya que atendemos de abajo hacia arriba y no prestamos atención a personas sin respeto y sin educación.</li>
-          <li><strong>Tenemos respuesta para cada cuenta</strong>, solo hay que TENER PACIENCIA; reponemos días de más por las demoras.</li>
-          <li><strong>Si deseas hablar mal de nuestro trabajo</strong>, simplemente serás ignorado y se te enviará a revisar nuestra parte informativa en la página web porque no tenemos tiempo para pelear con clientes que no leen.</li>
-        </ol>
+</header>
 
-        <p>Esperamos que hayas leído con atención cada punto explicado; ahora lee el próximo sobre <strong>¿CÓMO COMPRAR?</strong></p>
-        <p><strong>NO TARDES EN UNIRTE A NUESTRA COMUNIDAD DE CLIENTES</strong></p>
-        <p>¿Alguna duda o pregunta? Escríbenos a nuestro chat anclado en la página web.</p>
+<section class="hero" id="inicio">
 
-        <button class="close" onclick="closeSection('sec-info')">Cerrar</button>
-      </section>
+<div>
 
-      <!-- COMO COMPRAR -->
-      <section id="sec-comprar" class="section" aria-hidden="true">
-        <h2>Cómo comprar</h2>
+<h1>ByF Distribuciones</h1>
 
-        <h3>PRIMEROS PUNTOS IMPORTANTES</h3>
-        <ul>
-          <li>Lo primero: solo recibimos pedidos de cuentas <strong>VÍA WHATSAPP</strong>; la entrega es por WhatsApp.</li>
-          <li>Para revendedores en CHILE: tenemos números de WhatsApp por cada servicio (tiendas por servicio).</li>
-          <li>Clientes fuera de CHILE: serán atendidos en nuestro WhatsApp principal.</li>
-        </ul>
+<p>Tu Estilo, Tu Regla.</p>
 
-        <h3>Ahora bien, para comprar es muy fácil:</h3>
-        <ol>
-          <li>Al escribir a nuestro WhatsApp principal, te enviaremos una lista actualizada de precios y el catálogo completo.</li>
-          <li>Clientes chilenos: presta atención a nuestros números de contacto por cada servicio.</li>
-          <li>Las PROMOCIONES se publican mayormente en historias de WhatsApp; recomendamos agregar nuestros números a tus contactos.</li>
-          <li>Enviamos dos emojis que sirven para ordenar el trabajo internamente.</li>
-          <li>NO ACUMULAMOS DINERO: compra lo que necesites en el momento; el precio no cambia.</li>
-          <li>Nuestros precios están diseñados para que puedas revender; recomendamos vender al doble (ej.: si una cuenta está en 1.000, puedes venderla en 2.000).</li>
-          <li>Apenas se entrega la cuenta, viene ACTIVA (no se activa al entregar).</li>
-          <li>Si no entiendes la instalación o uso, revisa la página web donde están todas las instrucciones.</li>
-          <li>Sólo falta solicitar el método de pago.</li>
-        </ol>
+<a href="#catalogo" class="btn">Ver Catálogo</a>
 
-        <p>Esperamos que hayas leído con atención; luego continúa con la sección <strong>MÉTODOS DE PAGO</strong>.</p>
-        <p>¿Dudas o preguntas? Escríbenos al chat anclado en la página web.</p>
+</div>
 
-        <button class="close" onclick="closeSection('sec-comprar')">Cerrar</button>
-      </section>
+</section>
+<!-- CATALOGO -->
 
-      <!-- METODOS DE PAGO -->
-      <section id="sec-pago" class="section" aria-hidden="true">
-        <h2>Métodos de pago</h2>
+<section id="catalogo">
 
-        <ul>
-          <li>Nos hacemos responsables por cualquier inconveniente con la cuenta, pero <strong>NO HACEMOS REEMBOLSOS DE DINERO</strong>.</li>
-          <li>La entrega se realiza con paciencia; trabajamos lo más rápido posible pese a la gran cantidad de clientes.</li>
-          <li>Luego de recibir comprobante, marcamos la venta y se procesa la entrega.</li>
-          <li>Garantía totalmente asegurada; cada día perdido se cumple e incluso reponemos días de más si corresponde.</li>
-          <li>EN WHATSAPP SE INDICA EL MEDIO DE PAGO CORRESPONDIENTE.</li>
-          <li>Si no entiendes cómo hacer un depósito/transferencia, solicita ayuda a un familiar o amigo; no disponemos del tiempo para explicarlo en detalle.</li>
-          <li>Presta atención por si hay algún cambio en la cuenta bancaria; mayormente usamos las mismas.</li>
-        </ul>
+<h2 class="titulo">Productos Destacados</h2>
 
-        <p>Esperamos que hayas leído con atención; ahora continúa con <strong>TÉRMINOS DE COMPRA</strong>.</p>
-        <p>¿Dudas? Escríbenos al chat anclado en la página web.</p>
+<div class="productos">
 
-        <button class="close" onclick="closeSection('sec-pago')">Cerrar</button>
-      </section>
+<div class="card">
 
-      <!-- TERMINOS -->
-      <section id="sec-terminos" class="section" aria-hidden="true">
-        <h2>Términos de compra</h2>
+<img src="img/productos/polera1.jpg" alt="Polera">
 
-        <h3>OFRECEMOS 2 TIPOS DE CUENTAS</h3>
+<h3>Poleras Premium</h3>
 
-        <h4>CUENTAS AUTOPAGABLES</h4>
-        <ul>
-          <li>No son métodos genéricos; NO sufrimos caídas masivas.</li>
-          <li>Las cuentas que se dañan y dejan de existir se reponen con una CUENTA NUEVA.</li>
-          <li>Algunas cuentas poseen un dueño que las autopaga; nosotros solo ingresamos y disfrutamos del servicio.</li>
-          <li>Las cuentas NO pueden ser editadas ni los perfiles, porque corren el riesgo de dañarse.</li>
-          <li>Entregamos garantía aun si la cuenta le faltan 3 días para vencer; repondremos el tiempo comprado.</li>
-          <li>La entrega es INMEDIATA, pero en ocasiones por alta demanda puede tardar.</li>
-          <li>En casos extremos que las cuentas dejan de funcionar, optamos por cambios de servicios otorgando más tiempo y descuentos.</li>
-        </ul>
+<p>Nike, Lacoste, Amiri y muchos más.</p>
 
-        <h4>CUENTAS PERSONALES</h4>
-        <ul>
-          <li>Usamos métodos estables para evitar caídas masivas.</li>
-          <li>Las cuentas que se dañan son reparadas o reemplazadas en el menor tiempo posible.</li>
-          <li>Las cuentas son totalmente EDITABLES internamente.</li>
-          <li>No se puede editar el correo ni la clave porque existe riesgo de caída sin garantía.</li>
-          <li>Cumplimos con el tiempo estimado de cada servicio.</li>
-        </ul>
-
-        <h3>PUNTOS IMPORTANTES</h3>
-        <ul>
-          <li>Somos TRANSPARENTES y queremos informarte lo que brindamos de antemano.</li>
-          <li>Si vas a molestar o faltar el respeto, mejor no compres; trabajamos con personas educadas.</li>
-          <li>Atención: están comprando algo que NO ES ORIGINAL; lo original se compra en la página oficial.</li>
-          <li>Si no tenemos stock, informamos y marcamos saldo para que el cliente solicite otro servicio.</li>
-          <li>HAY STOCK SUFICIENTE PARA SURTIR A TODOS Y SEGUIR VENDIENDO COMO COMUNIDAD.</li>
-          <li>ENTRE MÁS ESTABILIDAD, MÁS COSTOSA SERÁ LA CUENTA.</li>
-          <li>CON UN USO CORRECTO LAS CUENTAS DURARÁN MÁS SIN COSTO ADICIONAL; PERO SOLO CUMPLIMOS EL TIEMPO ESTIMADO.</li>
-          <li>LAS CUENTAS SON LIMITADAS; PREGUNTA DISPONIBILIDAD.</li>
-          <li>OFRECEMOS AL MEJOR PRECIO PARA QUE REVENDAN SIN LÍMITES.</li>
-          <li>LOS DATOS BANCARIOS ESTÁN CON LA LISTA DE PRECIOS.</li>
-          <li>NO HAY REEMBOLSOS DE DINERO EN NINGÚN CONCEPTO.</li>
-        </ul>
-
-        <p>SI NO ACEPTA: esperamos que tenga buen día y puede seguir nuestras historias para cambios futuros.</p>
-        <p>SI ACEPTA LOS TÉRMINOS: BIENVENIDO A NUESTRA COMUNIDAD. MUCHAS GRACIAS POR INFORMARTE. <strong>SOMOS BLACKSTREAMCL</strong></p>
-
-        <button class="close" onclick="closeSection('sec-terminos')">Cerrar</button>
-      </section>
-
-      <!-- SOPORTE -->
-      <section id="sec-soporte" class="section" aria-hidden="true">
-        <h2>Soporte 24/7</h2>
-
-        <p>
-          Nos comprometemos a brindarte atención continua y asistencia en cualquier momento del día.
-          En caso de que la cuenta presente fallas, deje de funcionar o sea desactivada, garantizamos su reposición inmediata durante todo el período de su suscripción.
-        </p>
-
-        <p>
-          Nuestro equipo está disponible las 24 horas, los 7 días de la semana, para asegurar que siempre disfrutes del servicio sin interrupciones.
-        </p>
-
-        <p>
-          Importante: Esta política se aplica únicamente mientras la suscripción se encuentre activada
-          y debe consultarse junto a los Términos de Compra para conocer las condiciones completas del servicio.
-        </p>
-
-        <button class="close" onclick="closeSection('sec-soporte')">Cerrar</button>
-      </section>
-
-    </div>
-
-    <footer>© BlackStreamCL — Comunidad oficial. Lee los términos antes de comprar.</footer>
-
-  </div>
-
-<script>
-  // abre la sección y oculta las demás
-  function openSection(id){
-    document.querySelectorAll('.section').forEach(s=>{
-      s.classList.remove('active');
-      s.setAttribute('aria-hidden','true');
-    });
-    const el = document.getElementById(id);
-    if(!el) return;
-    el.classList.add('active');
-    el.setAttribute('aria-hidden','false');
-    // scroll a sección para móvil/pc:
-    window.scrollTo({top: el.offsetTop - 24, behavior:'smooth'});
-  }
-
-  function closeSection(id){
-    const el = document.getElementById(id);
-    if(!el) return;
-    el.classList.remove('active');
-    el.setAttribute('aria-hidden','true');
-    window.scrollTo({top:0, behavior:'smooth'});
-  }
-
-  // accesibilidad: Enter on cards
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){
-      document.querySelectorAll('.section.active').forEach(s=>{
-        s.classList.remove('active'); s.setAttribute('aria-hidden','true');
-      });
-      window.scrollTo({top:0, behavior:'smooth'});
-    }
-  });
-</script>
-<!-- BOTÓN INSTAGRAM NEÓN (ESQUINA SUPERIOR IZQUIERDA) -->
-<a href="https://instagram.com/BlackStreamCL" target="_blank" class="insta-neon">
-  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+<a href="https://wa.me/56982926515" target="_blank">
+Consultar
 </a>
 
-<style>
-  .insta-neon {
-    position: fixed;
-    top: 25px;
-    left: 25px;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+</div>
 
-    background: rgba(15, 0, 30, 0.45);
-    backdrop-filter: blur(4px);
-    border: 2px solid #b300ff;
-    box-shadow: 
-      0 0 10px #b300ff,
-      0 0 20px #ff00cc,
-      0 0 30px #b300ff;
+<div class="card">
 
-    transition: 0.3s ease;
-    z-index: 9999;
-  }
+<img src="img/productos/zapatillas.jpg" alt="Zapatillas">
 
-  .insta-neon img {
-    width: 30px;
-    height: 30px;
-    filter: drop-shadow(0 0 6px #ff00f7);
-  }
+<h3>Zapatillas</h3>
 
-  @keyframes neonPulse {
-    0% {
-      box-shadow: 0 0 10px #b300ff, 0 0 20px #ff00cc, 0 0 30px #b300ff;
-    }
-    50% {
-      box-shadow: 0 0 15px #d700ff, 0 0 25px #ff33dd, 0 0 40px #ff00cc;
-    }
-    100% {
-      box-shadow: 0 0 10px #b300ff, 0 0 20px #ff00cc, 0 0 30px #b300ff;
-    }
-  }
+<p>Jordan, Nike, Adidas.</p>
 
-  .insta-neon:hover {
-    transform: scale(1.12);
-    animation: neonPulse 1s infinite;
-    border-color: #ff00cc;
-  }
-</style>
+<a href="https://wa.me/56982926515" target="_blank">
+Consultar
+</a>
+
+</div>
+
+<div class="card">
+
+<img src="img/productos/chaqueta.jpg" alt="Chaquetas">
+
+<h3>Chaquetas North Face</h3>
+
+<p>Modelos 700 y nuevas temporadas.</p>
+
+<a href="https://wa.me/56982926515" target="_blank">
+Consultar
+</a>
+
+</div>
+
+<div class="card">
+
+<img src="img/productos/pijama.jpg" alt="Pijamas">
+
+<h3>Pijamas</h3>
+
+<p>Adulto e Infantil.</p>
+
+<a href="https://wa.me/56982926515" target="_blank">
+Consultar
+</a>
+
+</div>
+
+<div class="card">
+
+<img src="img/productos/plumon.jpg" alt="Plumones">
+
+<h3>Plumones</h3>
+
+<p>1½ plazas, 2 plazas y King.</p>
+
+<a href="https://wa.me/56982926515" target="_blank">
+Consultar
+</a>
+
+</div>
+
+<div class="card">
+
+<img src="img/productos/accesorios.jpg" alt="Accesorios">
+
+<h3>Más Productos</h3>
+
+<p>Paraguas, primeras capas, sets de baño y mucho más.</p>
+
+<a href="https://wa.me/56982926515" target="_blank">
+Consultar
+</a>
+
+</div>
+
+</div>
+
+</section>
+<!-- SOBRE NOSOTROS -->
+
+<section id="nosotros">
+
+<h2 class="titulo">¿Por qué elegir ByF Distribuciones?</h2>
+
+<div class="productos">
+
+<div class="card">
+<i class="fa-solid fa-truck-fast fa-3x" style="margin-top:30px;color:#D4AF37;"></i>
+<h3>Envíos a todo Chile</h3>
+<p>Despachamos a todo el país de forma rápida y segura.</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-shirt fa-3x" style="margin-top:30px;color:#D4AF37;"></i>
+<h3>Calidad Premium</h3>
+<p>Trabajamos con productos de excelente calidad y terminaciones.</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-headset fa-3x" style="margin-top:30px;color:#D4AF37;"></i>
+<h3>Atención Personalizada</h3>
+<p>Respondemos todas tus dudas antes y después de la compra.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- REDES -->
+
+<section id="redes">
+
+<h2 class="titulo">Síguenos</h2>
+
+<div class="redes">
+
+<a href="https://www.instagram.com/byf.distribuciones?igsh=MXYxNXdpODN1bTdlcA%3D%3D" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://www.tiktok.com/@byf.distribuciones" target="_blank">
+<i class="fab fa-tiktok"></i>
+</a>
+
+<a href="https://wa.me/56982926515" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+</div>
+
+</section>
+
+<!-- CONTACTO -->
+
+<section id="contacto">
+
+<h2 class="titulo">Contáctanos</h2>
+
+<div style="text-align:center;max-width:700px;margin:auto;">
+
+<p style="font-size:20px;margin-bottom:20px;color:#ddd;">
+¿Buscas algún modelo en especial?
+Escríbenos y te ayudaremos.
+</p>
+
+<a class="btn" href="https://wa.me/56982926515" target="_blank">
+Hablar por WhatsApp
+</a>
+
+</div>
+
+</section>
+
+<a class="whatsapp" href="https://wa.me/56982926515" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<footer>
+
+<h2 style="color:#D4AF37;">ByF Distribuciones</h2>
+
+<p style="margin-top:15px;">
+© 2026 Todos los derechos reservados.
+</p>
+
+<p style="margin-top:10px;">
+Instagram: @byf.distribuciones
+</p>
+
+<p>
+TikTok: @byf.distribuciones
+</p>
+
+<p style="margin-top:10px;">
+byfdistribuciones.cl
+</p>
+
+</footer>
 
 </body>
+
 </html>
