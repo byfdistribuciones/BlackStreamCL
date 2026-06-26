@@ -16,6 +16,7 @@
 
 <style>
 
+/* RESET */
 *{
 margin:0;
 padding:0;
@@ -25,379 +26,273 @@ scroll-behavior:smooth;
 }
 
 body{
-
 background:#050505;
 color:white;
-
 }
 
+/* FONDO */
 body::before{
-
 content:"";
-
 position:fixed;
-
 width:100%;
 height:100%;
-
 background:
-
 radial-gradient(circle at top,#D4AF37 0%,transparent 40%),
-
 radial-gradient(circle at bottom,#222 0%,transparent 45%);
-
 opacity:.18;
-
 z-index:-1;
-
 }
 
+/* HEADER */
 header{
-
 position:fixed;
-
 top:0;
-
 left:0;
-
 width:100%;
-
 display:flex;
-
 justify-content:space-between;
-
 align-items:center;
-
 padding:20px 8%;
-
 background:rgba(0,0,0,.75);
-
 backdrop-filter:blur(12px);
-
 z-index:999;
-
 border-bottom:1px solid rgba(212,175,55,.15);
-
 }
 
 .logo{
-
 display:flex;
-
 align-items:center;
-
 gap:15px;
-
 }
 
-.logo img{
-
-height:60px;
-
-}
+.logo img{height:60px;}
 
 .logo h2{
-
 color:#D4AF37;
-
 font-size:28px;
-
 }
 
 nav a{
-
 text-decoration:none;
-
 color:white;
-
 margin-left:30px;
-
 font-weight:600;
-
 transition:.3s;
-
 }
 
 nav a:hover{
-
 color:#D4AF37;
-
 }
 
+/* HERO */
 .hero{
-
 height:100vh;
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
 text-align:center;
-
 padding:30px;
-
 }
 
 .hero h1{
-
 font-size:70px;
-
 color:#D4AF37;
-
 margin-bottom:20px;
-
 }
 
 .hero p{
-
 font-size:22px;
-
 color:#ddd;
-
 margin-bottom:40px;
-
 }
 
 .btn{
-
 display:inline-block;
-
 padding:16px 45px;
-
 background:#D4AF37;
-
 color:#000;
-
 text-decoration:none;
-
 font-weight:bold;
-
 border-radius:40px;
-
 transition:.4s;
-
 }
 
 .btn:hover{
-
 transform:scale(1.05);
-
 box-shadow:0 0 30px #D4AF37;
-
 }
 
+/* SECCIONES */
 section{
-
 padding:120px 8%;
-
 }
 
 .titulo{
-
 font-size:45px;
-
 text-align:center;
-
 margin-bottom:60px;
-
 color:#D4AF37;
-
 }
 
-.produtos{
-
+/* PRODUCTOS GRID */
+.produtos,
+.productos{
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
 gap:30px;
-
 }
 
+/* CARD */
 .card{
-
 background:#111;
-
 border-radius:20px;
-
 overflow:hidden;
-
 transition:.4s;
-
 border:1px solid rgba(212,175,55,.2);
-
 }
 
 .card:hover{
-
 transform:translateY(-10px);
-
 box-shadow:0 0 25px rgba(212,175,55,.4);
-
 }
 
 .card img{
-
 width:100%;
-
 height:320px;
-
 object-fit:cover;
-
 }
 
 .card h3{
-
 padding:15px;
-
 font-size:22px;
-
 }
 
 .card p{
-
 padding:0 15px;
-
 color:#aaa;
-
 }
 
 .card a{
-
 display:block;
-
 margin:20px;
-
 text-align:center;
-
 padding:12px;
-
 background:#D4AF37;
-
 color:#000;
-
 font-weight:bold;
-
 text-decoration:none;
-
 border-radius:10px;
-
 }
 
-.redes{
+/* PRODUCTO GALERIA */
+.producto{
+background:#111;
+border-radius:20px;
+padding:20px;
+margin:30px auto;
+max-width:700px;
+text-align:center;
+border:1px solid #D4AF37;
+}
 
+.galeria{
 display:flex;
-
+gap:15px;
 justify-content:center;
-
-gap:30px;
-
 flex-wrap:wrap;
+}
 
+.galeria img{
+width:280px;
+border-radius:15px;
+transition:.3s;
+}
+
+.galeria img:hover{
+transform:scale(1.05);
+}
+
+.producto h3{
+color:#D4AF37;
+margin-top:20px;
+}
+
+.producto p{
+color:white;
+}
+
+.comprar{
+display:inline-block;
+margin-top:15px;
+background:#D4AF37;
+color:black;
+padding:12px 30px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* REDES */
+.redes{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
 }
 
 .redes a{
-
 width:80px;
-
 height:80px;
-
 border-radius:50%;
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
 font-size:35px;
-
 color:white;
-
 text-decoration:none;
-
 background:#111;
-
 transition:.3s;
-
 border:1px solid #D4AF37;
-
 }
 
 .redes a:hover{
-
 background:#D4AF37;
-
 color:#000;
-
 transform:scale(1.1);
-
 }
 
+/* WHATSAPP */
 .whatsapp{
-
 position:fixed;
-
 right:25px;
-
 bottom:25px;
-
 width:75px;
-
 height:75px;
-
 background:#25D366;
-
 border-radius:50%;
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
 font-size:40px;
-
 color:white;
-
 text-decoration:none;
-
 box-shadow:0 0 20px #25D366;
-
 z-index:999;
-
 }
 
+/* FOOTER */
 footer{
-
 padding:40px;
-
 text-align:center;
-
 color:#999;
-
 background:#000;
-
 margin-top:80px;
-
 }
 
+/* RESPONSIVE */
 @media(max-width:768px){
-
-.hero h1{
-
-font-size:45px;
-
-}
-
-nav{
-
-display:none;
-
-}
-
+.hero h1{font-size:45px;}
+nav{display:none;}
 }
 
 </style>
@@ -406,45 +301,31 @@ display:none;
 
 <body>
 
+<!-- HEADER -->
 <header>
-
 <div class="logo">
-
-<img src="img/logo.png">
-
+<img src="img/logo.png" alt="logo">
 <h2>ByF Distribuciones</h2>
-
 </div>
 
 <nav>
-
 <a href="#inicio">Inicio</a>
-
 <a href="#catalogo">Catálogo</a>
-
 <a href="#redes">Redes</a>
-
 <a href="#contacto">Contacto</a>
-
 </nav>
-
 </header>
 
+<!-- HERO -->
 <section class="hero" id="inicio">
-
 <div>
-
 <h1>ByF Distribuciones</h1>
-
 <p>Tu Estilo, Tu Regla.</p>
-
 <a href="#catalogo" class="btn">Ver Catálogo</a>
-
 </div>
-
 </section>
-<!-- CATALOGO -->
 
+<!-- CATALOGO -->
 <section id="catalogo">
 
 <h2 class="titulo">Productos Destacados</h2>
@@ -452,157 +333,91 @@ display:none;
 <div class="productos">
 
 <div class="card">
-
-<img src="img/productos/polera1.jpg" alt="Polera">
-
-<h3>Primera Capa nike</h3>
-
-<p>parte de abajo.</p>
-
-<a href="https://wa.me/56982926515" target="_blank">
-Consultar
-</a>
-
+<img src="img/productos/polera1.jpg" alt="">
+<h3>Primera Capa Nike</h3>
+<p>Parte de abajo.</p>
+<a href="https://wa.me/56982926515" target="_blank">Consultar</a>
 </div>
 
 <div class="card">
-
-<img src="img/productos/zapatillas.jpg" alt="Zapatillas">
-
+<img src="img/productos/zapatillas.jpg" alt="">
 <h3>Zapatillas</h3>
-
 <p>Jordan, Nike, Adidas.</p>
-
-<a href="https://wa.me/56982926515" target="_blank">
-Consultar
-</a>
-
+<a href="https://wa.me/56982926515" target="_blank">Consultar</a>
 </div>
 
 <div class="card">
-
-<img src="img/productos/chaqueta.jpg" alt="Chaquetas">
-
+<img src="img/productos/chaqueta.jpg" alt="">
 <h3>Chaquetas North Face</h3>
-
 <p>Modelos 700 y nuevas temporadas.</p>
-
-<a href="https://wa.me/56982926515" target="_blank">
-Consultar
-</a>
-
+<a href="https://wa.me/56982926515" target="_blank">Consultar</a>
 </div>
 
 <div class="card">
-
-<img src="img/productos/pijama.jpg" alt="Pijamas">
-
+<img src="img/productos/pijama.jpg" alt="">
 <h3>Pijamas</h3>
-
-<p>Adulto e Infantil.</p>
-
-<a href="https://wa.me/56982926515" target="_blank">
-Consultar
-</a>
-
+<p>Adulto e infantil.</p>
+<a href="https://wa.me/56982926515" target="_blank">Consultar</a>
 </div>
 
 <div class="card">
-
-<img src="img/productos/plumon.jpg" alt="Plumones">
-
+<img src="img/productos/plumon.jpg" alt="">
 <h3>Plumones</h3>
-
-<p>1½ plazas, 2 plazas y King.</p>
-
-<a href="https://wa.me/56982926515" target="_blank">
-Consultar
-</a>
-
+<p>1½, 2 plazas y King.</p>
+<a href="https://wa.me/56982926515" target="_blank">Consultar</a>
 </div>
 
 <div class="card">
-
-<img src="img/productos/accesorios.jpg" alt="Accesorios">
-
+<img src="img/productos/accesorios.jpg" alt="">
 <h3>Más Productos</h3>
+<p>Paraguas, sets de baño y más.</p>
+<a href="https://wa.me/56982926515" target="_blank">Consultar</a>
+</div>
 
-<p>Paraguas, primeras capas, sets de baño y mucho más.</p>
+</div>
 
-<a href="https://wa.me/56982926515" target="_blank">
-Consultar
+<!-- PRODUCTO CON GALERIA -->
+<div class="producto">
+
+<div class="galeria">
+<img src="img/calzas/calza1.jpg" alt="">
+<img src="img/calzas/calza2.jpg" alt="">
+</div>
+
+<h3>Calzas Nike Dri-Fit</h3>
+<p>Disponibles para adultos y jóvenes. Excelente calidad.</p>
+
+<a class="comprar" href="https://wa.me/56982926515" target="_blank">
+Consultar por WhatsApp
 </a>
-
-</div>
-
-</div>
-
-</section>
-<!-- SOBRE NOSOTROS -->
-
-<section id="nosotros">
-
-<h2 class="titulo">¿Por qué elegir ByF Distribuciones?</h2>
-
-<div class="productos">
-
-<div class="card">
-<i class="fa-solid fa-truck-fast fa-3x" style="margin-top:30px;color:#D4AF37;"></i>
-<h3>Envíos a todo Chile</h3>
-<p>Despachamos a todo el país de forma rápida y segura.</p>
-</div>
-
-<div class="card">
-<i class="fa-solid fa-shirt fa-3x" style="margin-top:30px;color:#D4AF37;"></i>
-<h3>Calidad Premium</h3>
-<p>Trabajamos con productos de excelente calidad y terminaciones.</p>
-</div>
-
-<div class="card">
-<i class="fa-solid fa-headset fa-3x" style="margin-top:30px;color:#D4AF37;"></i>
-<h3>Atención Personalizada</h3>
-<p>Respondemos todas tus dudas antes y después de la compra.</p>
-</div>
 
 </div>
 
 </section>
 
 <!-- REDES -->
-
 <section id="redes">
 
 <h2 class="titulo">Síguenos</h2>
 
 <div class="redes">
 
-<a href="https://www.instagram.com/byf.distribuciones?igsh=MXYxNXdpODN1bTdlcA%3D%3D" target="_blank">
-<i class="fab fa-instagram"></i>
-</a>
-
-<a href="https://www.tiktok.com/@byf.distribuciones" target="_blank">
-<i class="fab fa-tiktok"></i>
-</a>
-
-<a href="https://wa.me/56982926515" target="_blank">
-<i class="fab fa-whatsapp"></i>
-</a>
+<a href="https://www.instagram.com/byf.distribuciones" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://www.tiktok.com/@byf.distribuciones" target="_blank"><i class="fab fa-tiktok"></i></a>
+<a href="https://wa.me/56982926515" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 </div>
 
 </section>
 
 <!-- CONTACTO -->
-
 <section id="contacto">
 
 <h2 class="titulo">Contáctanos</h2>
 
 <div style="text-align:center;max-width:700px;margin:auto;">
-
-<p style="font-size:20px;margin-bottom:20px;color:#ddd;">
-¿Buscas algún modelo en especial?
-Escríbenos y te ayudaremos.
+<p style="font-size:20px;color:#ddd;margin-bottom:20px;">
+Escríbenos para pedidos o consultas.
 </p>
 
 <a class="btn" href="https://wa.me/56982926515" target="_blank">
@@ -613,101 +428,19 @@ Hablar por WhatsApp
 
 </section>
 
+<!-- WHATSAPP BUTTON -->
 <a class="whatsapp" href="https://wa.me/56982926515" target="_blank">
 <i class="fab fa-whatsapp"></i>
 </a>
 
+<!-- FOOTER -->
 <footer>
-
 <h2 style="color:#D4AF37;">ByF Distribuciones</h2>
-
-<p style="margin-top:15px;">
-© 2026 Todos los derechos reservados.
-</p>
-
-<p style="margin-top:10px;">
-Instagram: @byf.distribuciones
-</p>
-
-<p>
-TikTok: @byf.distribuciones
-</p>
-
-<p style="margin-top:10px;">
-byfdistribuciones.cl
-</p>
-
+<p>© 2026 Todos los derechos reservados.</p>
+<p>Instagram: @byf.distribuciones</p>
+<p>TikTok: @byf.distribuciones</p>
+<p>byfdistribuciones.cl</p>
 </footer>
 
 </body>
-
 </html>
-
-<div class="producto">
-
-    <div class="galeria">
-
-        <img src="imagenes/calza1.jpg.png" alt="Calza Nike 1">
-
-        <img src="imagenes/calza2.jpg.png" alt="Calza Nike 2">
-
-    </div>
-
-    <h3>Calzas Nike Dri-Fit</h3>
-
-    <p>
-        Disponibles para adultos y jóvenes.<br>
-        Excelente calidad.
-    </p>
-
-    <a class="comprar" href="https://wa.me/56982926515" target="_blank">
-        Consultar por WhatsApp
-    </a>
-
-</div>
-.producto{
-    background:#111;
-    border-radius:20px;
-    padding:20px;
-    margin:30px auto;
-    max-width:700px;
-    text-align:center;
-    border:1px solid #D4AF37;
-}
-
-.galeria{
-    display:flex;
-    gap:15px;
-    justify-content:center;
-    flex-wrap:wrap;
-}
-
-.galeria img{
-    width:280px;
-    border-radius:15px;
-    transition:.3s;
-}
-
-.galeria img:hover{
-    transform:scale(1.05);
-}
-
-.producto h3{
-    color:#D4AF37;
-    margin-top:20px;
-}
-
-.producto p{
-    color:white;
-}
-
-.comprar{
-    display:inline-block;
-    margin-top:15px;
-    background:#D4AF37;
-    color:black;
-    padding:12px 30px;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:bold;
-}
