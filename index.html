@@ -7,16 +7,11 @@
 
 <title>ByF Distribuciones | Tu Estilo, Tu Regla</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 <style>
 
-/* RESET */
 *{
 margin:0;
 padding:0;
@@ -30,19 +25,6 @@ background:#050505;
 color:white;
 }
 
-/* FONDO */
-body::before{
-content:"";
-position:fixed;
-width:100%;
-height:100%;
-background:
-radial-gradient(circle at top,#D4AF37 0%,transparent 40%),
-radial-gradient(circle at bottom,#222 0%,transparent 45%);
-opacity:.18;
-z-index:-1;
-}
-
 /* HEADER */
 header{
 position:fixed;
@@ -53,31 +35,16 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 8%;
-background:rgba(0,0,0,.75);
-backdrop-filter:blur(12px);
+background:rgba(0,0,0,.8);
 z-index:999;
-border-bottom:1px solid rgba(212,175,55,.15);
 }
 
-.logo{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.logo img{height:60px;}
-
-.logo h2{
-color:#D4AF37;
-font-size:28px;
-}
+.logo img{height:55px;}
 
 nav a{
-text-decoration:none;
 color:white;
-margin-left:30px;
-font-weight:600;
-transition:.3s;
+margin-left:20px;
+text-decoration:none;
 }
 
 nav a:hover{
@@ -91,108 +58,94 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:30px;
 }
 
 .hero h1{
-font-size:70px;
+font-size:60px;
 color:#D4AF37;
-margin-bottom:20px;
 }
 
 .hero p{
-font-size:22px;
+font-size:20px;
 color:#ddd;
-margin-bottom:40px;
+margin:15px 0;
 }
 
 .btn{
-display:inline-block;
-padding:16px 45px;
 background:#D4AF37;
 color:#000;
+padding:15px 40px;
+border-radius:30px;
 text-decoration:none;
 font-weight:bold;
-border-radius:40px;
-transition:.4s;
 }
 
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 30px #D4AF37;
-}
-
-/* SECCIONES */
+/* PRODUCTOS */
 section{
-padding:120px 8%;
+padding:100px 8%;
 }
 
 .titulo{
-font-size:45px;
 text-align:center;
-margin-bottom:60px;
+font-size:40px;
 color:#D4AF37;
+margin-bottom:50px;
 }
 
-/* PRODUCTOS GRID */
-.produtos,
-.productos{
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
 }
 
-/* CARD */
 .card{
 background:#111;
-border-radius:20px;
+border-radius:15px;
 overflow:hidden;
-transition:.4s;
-border:1px solid rgba(212,175,55,.2);
+border:1px solid #333;
+transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 25px rgba(212,175,55,.4);
+transform:translateY(-8px);
+border-color:#D4AF37;
 }
 
 .card img{
 width:100%;
-height:320px;
+height:280px;
 object-fit:cover;
 }
 
 .card h3{
-padding:15px;
-font-size:22px;
+padding:10px;
+color:#fff;
 }
 
 .card p{
-padding:0 15px;
+padding:0 10px;
 color:#aaa;
 }
 
 .card a{
 display:block;
-margin:20px;
+margin:15px;
+padding:10px;
 text-align:center;
-padding:12px;
 background:#D4AF37;
 color:#000;
-font-weight:bold;
-text-decoration:none;
 border-radius:10px;
+text-decoration:none;
 }
 
-/* PRODUCTO GALERIA */
-.producto{
+/* GALERIA CALZAS */
+.producto-extra{
 background:#111;
-border-radius:20px;
 padding:20px;
-margin:30px auto;
-max-width:700px;
+margin-top:50px;
+border-radius:20px;
+border:1px solid #333;
 text-align:center;
-border:1px solid #D4AF37;
 }
 
 .galeria{
@@ -203,96 +156,29 @@ flex-wrap:wrap;
 }
 
 .galeria img{
-width:280px;
+width:260px;
 border-radius:15px;
-transition:.3s;
 }
 
-.galeria img:hover{
-transform:scale(1.05);
-}
-
-.producto h3{
-color:#D4AF37;
-margin-top:20px;
-}
-
-.producto p{
-color:white;
-}
-
-.comprar{
-display:inline-block;
-margin-top:15px;
-background:#D4AF37;
-color:black;
-padding:12px 30px;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
-}
-
-/* REDES */
-.redes{
-display:flex;
-justify-content:center;
-gap:30px;
-flex-wrap:wrap;
-}
-
-.redes a{
-width:80px;
-height:80px;
+.whatsapp{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#25D366;
+width:70px;
+height:70px;
 border-radius:50%;
 display:flex;
 justify-content:center;
 align-items:center;
 font-size:35px;
 color:white;
-text-decoration:none;
-background:#111;
-transition:.3s;
-border:1px solid #D4AF37;
 }
 
-.redes a:hover{
-background:#D4AF37;
-color:#000;
-transform:scale(1.1);
-}
-
-/* WHATSAPP */
-.whatsapp{
-position:fixed;
-right:25px;
-bottom:25px;
-width:75px;
-height:75px;
-background:#25D366;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:40px;
-color:white;
-text-decoration:none;
-box-shadow:0 0 20px #25D366;
-z-index:999;
-}
-
-/* FOOTER */
 footer{
-padding:40px;
 text-align:center;
-color:#999;
-background:#000;
-margin-top:80px;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-.hero h1{font-size:45px;}
-nav{display:none;}
+padding:40px;
+color:#888;
 }
 
 </style>
@@ -301,145 +187,102 @@ nav{display:none;}
 
 <body>
 
-<!-- HEADER -->
 <header>
 <div class="logo">
-<img src="img/logo.png" alt="logo">
-<h2>ByF Distribuciones</h2>
+<img src="img/logo.png">
 </div>
 
 <nav>
 <a href="#inicio">Inicio</a>
 <a href="#catalogo">Catálogo</a>
-<a href="#redes">Redes</a>
-<a href="#contacto">Contacto</a>
 </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero" id="inicio">
 <div>
 <h1>ByF Distribuciones</h1>
-<p>Tu Estilo, Tu Regla.</p>
-<a href="#catalogo" class="btn">Ver Catálogo</a>
+<p>Tu Estilo, Tu Regla</p>
+<a class="btn" href="#catalogo">Ver Catálogo</a>
 </div>
 </section>
 
-<!-- CATALOGO -->
 <section id="catalogo">
 
-<h2 class="titulo">Productos Destacados</h2>
+<h2 class="titulo">Productos</h2>
 
-<div class="productos">
+<div class="grid">
 
 <div class="card">
-<img src="img/productos/polera1.jpg" alt="">
+<img src="img/productos/polera1.jpg">
 <h3>Primera Capa Nike</h3>
-<p>Parte de abajo.</p>
-<a href="https://wa.me/56982926515" target="_blank">Consultar</a>
+<p>Calidad premium</p>
+<a href="https://wa.me/56982926515">Consultar</a>
 </div>
 
 <div class="card">
-<img src="img/productos/zapatillas.jpg" alt="">
+<img src="img/productos/zapatillas.jpg">
 <h3>Zapatillas</h3>
-<p>Jordan, Nike, Adidas.</p>
-<a href="https://wa.me/56982926515" target="_blank">Consultar</a>
+<p>Nike / Jordan / Adidas</p>
+<a href="https://wa.me/56982926515">Consultar</a>
 </div>
 
 <div class="card">
-<img src="img/productos/chaqueta.jpg" alt="">
+<img src="img/productos/chaqueta.jpg">
 <h3>Chaquetas North Face</h3>
-<p>Modelos 700 y nuevas temporadas.</p>
-<a href="https://wa.me/56982926515" target="_blank">Consultar</a>
+<p>Modelos 700</p>
+<a href="https://wa.me/56982926515">Consultar</a>
 </div>
 
 <div class="card">
-<img src="img/productos/pijama.jpg" alt="">
+<img src="img/productos/pijama.jpg">
 <h3>Pijamas</h3>
-<p>Adulto e infantil.</p>
-<a href="https://wa.me/56982926515" target="_blank">Consultar</a>
+<p>Adulto e infantil</p>
+<a href="https://wa.me/56982926515">Consultar</a>
 </div>
 
 <div class="card">
-<img src="img/productos/plumon.jpg" alt="">
+<img src="img/productos/plumon.jpg">
 <h3>Plumones</h3>
-<p>1½, 2 plazas y King.</p>
-<a href="https://wa.me/56982926515" target="_blank">Consultar</a>
+<p>1½ - 2 plazas - King</p>
+<a href="https://wa.me/56982926515">Consultar</a>
 </div>
 
 <div class="card">
-<img src="img/productos/accesorios.jpg" alt="">
-<h3>Más Productos</h3>
-<p>Paraguas, sets de baño y más.</p>
-<a href="https://wa.me/56982926515" target="_blank">Consultar</a>
+<img src="img/productos/accesorios.jpg">
+<h3>Accesorios</h3>
+<p>Variedad completa</p>
+<a href="https://wa.me/56982926515">Consultar</a>
 </div>
 
 </div>
 
-<!-- PRODUCTO CON GALERIA -->
-<div class="producto">
+<!-- CALZAS (GALERIA) -->
+
+<div class="producto-extra">
+
+<h2 class="titulo">Calzas Nike Dri-Fit</h2>
 
 <div class="galeria">
-<img src="img/calzas/calza1.jpg" alt="">
-<img src="img/calzas/calza2.jpg" alt="">
+<img src="img/calzas/calza1.jpg">
+<img src="img/calzas/calza2.jpg">
 </div>
 
-<h3>Calzas Nike Dri-Fit</h3>
-<p>Disponibles para adultos y jóvenes. Excelente calidad.</p>
+<p style="margin-top:15px;">Disponible en todas las tallas</p>
 
-<a class="comprar" href="https://wa.me/56982926515" target="_blank">
-Consultar por WhatsApp
-</a>
+<br>
 
-</div>
-
-</section>
-
-<!-- REDES -->
-<section id="redes">
-
-<h2 class="titulo">Síguenos</h2>
-
-<div class="redes">
-
-<a href="https://www.instagram.com/byf.distribuciones" target="_blank"><i class="fab fa-instagram"></i></a>
-<a href="https://www.tiktok.com/@byf.distribuciones" target="_blank"><i class="fab fa-tiktok"></i></a>
-<a href="https://wa.me/56982926515" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a class="btn" href="https://wa.me/56982926515">Consultar por WhatsApp</a>
 
 </div>
 
 </section>
 
-<!-- CONTACTO -->
-<section id="contacto">
-
-<h2 class="titulo">Contáctanos</h2>
-
-<div style="text-align:center;max-width:700px;margin:auto;">
-<p style="font-size:20px;color:#ddd;margin-bottom:20px;">
-Escríbenos para pedidos o consultas.
-</p>
-
-<a class="btn" href="https://wa.me/56982926515" target="_blank">
-Hablar por WhatsApp
-</a>
-
-</div>
-
-</section>
-
-<!-- WHATSAPP BUTTON -->
-<a class="whatsapp" href="https://wa.me/56982926515" target="_blank">
+<a class="whatsapp" href="https://wa.me/56982926515">
 <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- FOOTER -->
 <footer>
-<h2 style="color:#D4AF37;">ByF Distribuciones</h2>
-<p>© 2026 Todos los derechos reservados.</p>
-<p>Instagram: @byf.distribuciones</p>
-<p>TikTok: @byf.distribuciones</p>
-<p>byfdistribuciones.cl</p>
+© 2026 ByF Distribuciones
 </footer>
 
 </body>
